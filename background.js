@@ -29,7 +29,7 @@ var extras = {
   annotationsettings: {
     name: "Annotation Settings",
     folder: "annotationsettings",
-    script: "script.js",
+    script: "injector.js",
     match: {
       urlregex: /^https?:\/\/app\.roboflow\.com\/([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)\/images\/([a-zA-Z0-9]+)(?:\?.+)?$/
     }

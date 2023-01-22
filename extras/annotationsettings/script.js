@@ -1,9 +1,15 @@
+console.log("Annotation Settings")
 window.applyannotationsettings = setInterval(checkAndApplyAnnotationSettings,500);
+window.appliedannotationsettings = false
 function checkAndApplyAnnotationSettings() {
-    if(window.appliedannotationsettings) return
-        var signal = document.querySelector("#tools")
+    if(window.appliedannotationsettings) {
+      clearInterval(window.applyannotationsettings)
+      return
+    }
+    var signal = document.querySelector("#tools")
     if(signal) {
         console.log("Signal activated")
+        window.appliedannotationsettings = true
         clearInterval(window.applyannotationsettings)
         annotationSettings()
     }
@@ -11,6 +17,18 @@ function checkAndApplyAnnotationSettings() {
 
 
 async function annotationSettings() {
+  function injectScript(src) {
+    var script = document.createElement("script")
+    script.src = src
+    document.head.appendChild(script)
+    return new Promise((resolve,reject)=>{
+      script.onload = resolve
+    })
+  }
+  await injectScript("https://unpkg.com/popper.js@1")
+  await injectScript("https://unpkg.com/tippy.js@5/dist/tippy.iife.js")
+
+  
   var toolbar = document.querySelector("#tools")
   
   var divider = document.createElement("div")
@@ -24,7 +42,7 @@ async function annotationSettings() {
   settings.classList.add("tool","toolTip")
   settings.innerHTML = `
   <i class="far fa-ellipsis-v"></i>
-  <div class="settings tippy-content">
+  <div class="settings" style="display: none;">
       <div class="text">
           <h3 class="settings-heading title">Annotate Settings</h3>
           <p class="settings-description description">Customize your annotation experience.</p>
@@ -37,16 +55,16 @@ async function annotationSettings() {
   var options = [{"type":"brightness","label":"Brightness","min":0,"default":100,"max":200,"step":1},{"type":"contrast","label":"Contrast","min":0,"default":100,"max":200,"step":1},{"type":"grayscale","label":"Grayscale","min":0,"default":0,"max":100,"step":1},{"type":"invert","label":"Invert","min":0,"default":0,"max":100,"step":33.3},{"type":"opacity","label":"Opacity","min":0,"default":100,"max":100,"step":1},{"type":"saturate","label":"Saturate","min":0,"default":100,"max":200,"step":1}]
   var optionSettings = settings.querySelector(".settings-options")
   for(var option of options) {
-      var optionElement = document.createElement("div")
-      optionElement.classList.add("settings-option")
-      optionElement.dataset.optiontype = option.type
-      optionElement.innerHTML = `
-      <span class="option-name">${option.label}:</span>
-      <input type="range" min="${option.min}" max="${option.max}" value="${option.default}" step="${option.step}" class="option-slider">
-      `
-      var optionSlider = optionElement.querySelector(".option-slider")
-      optionSlider.onchange = updateImage
-      optionSettings.appendChild(optionElement)
+    var optionElement = document.createElement("div")
+    optionElement.classList.add("settings-option")
+    optionElement.dataset.optiontype = option.type
+    optionElement.innerHTML = `
+    <span class="option-name">${option.label}:</span>
+    <input type="range" min="${option.min}" max="${option.max}" value="${option.default}" step="${option.step}" class="option-slider">
+    `
+    var optionSlider = optionElement.querySelector(".option-slider")
+    optionSlider.onchange = updateImage
+    optionSettings.appendChild(optionElement)
   }
   function updateImage() {
       var optionElements = document.querySelectorAll(".settings-option")
@@ -57,7 +75,6 @@ async function annotationSettings() {
       })
       var cssFilter = cssFilters.join(" ")
       document.querySelector(".annotation").style.filter = cssFilter
-      console.log(optionElements,cssFilters)
   }
   
   // SET OLD SETTINGS
@@ -70,25 +87,33 @@ async function annotationSettings() {
           updateImage()
       }
   })
+
+
+  window.settingstippy = window.tippy(settings, {
+    content: settings.querySelector(".settings").querySelector(".text"),
+    allowHTML: true,
+    placement: 'left',
+    appendTo: 'parent',
+    interactive: true
+  })
+
   
-  settings.addEventListener("mouseover",function(e){
-      settings.querySelector(".settings").style.visibility="visible"
-  })
-  settings.addEventListener("mouseleave",function(e){
-      //settings.querySelector(".settings").style.visibility="hidden"
-  })
   
   const css = `
   .settings {
-      visibility: hidden;
       position: absolute;
-      right: 1.25rem;
-      width: 200px;
+      width: 300px;
   }
   
   .settings-heading {
       margin: 0;
       line-height: 1;
+  }
+  
+  .settings-options {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
   }
   
   .settings-option {
