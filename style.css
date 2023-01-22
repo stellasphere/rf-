@@ -1,0 +1,6 @@
+body {
+    margin: 0;
+    background: linear-gradient(180deg, #190f56, #713cef);
+    color: #fff;
+    min-width: 300px;
+}
