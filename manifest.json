@@ -1,10 +1,13 @@
 {
-    "manifest_version": 2,
-    "name": "RF++",
-    "version": "1.0.0",
-    "permissions": ["activeTab","webNavigation"],
-    "browser_action": {
-        "default_popup": "popup.html",
-        "default_icon": "icon.png"
-    }
+  "manifest_version": 2,
+  "name": "RF++",
+  "version": "1.0.0",
+  "permissions": ["activeTab","webNavigation"],
+  "browser_action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  }
 }
