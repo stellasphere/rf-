@@ -25,5 +25,14 @@ function newPage(data) {
   }
 }
 
-var extras = {}
+var extras = {
+  annotationsettings: {
+    name: "Annotation Settings",
+    folder: "annotationsettings",
+    script: "script.js",
+    match: {
+      urlregex: /^https?:\/\/app\.roboflow\.com\/([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)\/images\/([a-zA-Z0-9]+)(?:\?.+)?$/
+    }
+  }
+}
 chrome.storage.local.set({extras})
