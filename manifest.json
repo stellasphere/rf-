@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "RF++",
   "version": "1.0.0",
-  "permissions": ["activeTab","webNavigation"],
+  "permissions": ["activeTab","webNavigation","*://*.roboflow.com/*"],
   "browser_action": {
       "default_popup": "popup.html",
       "default_icon": "icon.png"
