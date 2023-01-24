@@ -4,7 +4,7 @@ s.onload = function() {
   this.remove();
 };
 (document.head || document.documentElement).appendChild(s);
-console.log("Script injected")
+console.log("Script injected",s.src)
 
 async function setSync(key,value) {
   return new Promise((resolve,reject)=>{
