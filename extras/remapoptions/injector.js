@@ -1,5 +1,5 @@
 var s = document.createElement('script');
-s.src = chrome.runtime.getURL('extras/annotationsettings/script.js');
+s.src = chrome.runtime.getURL('extras/remapoptions/script.js');
 s.onload = function() {
   this.remove();
 };
