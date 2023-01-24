@@ -31,7 +31,7 @@ var extras = {
     folder: "annotationsettings",
     script: "injector.js",
     match: {
-      urlregex: /^https?:\/\/app\.roboflow\.com\/([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)\/images\/([a-zA-Z0-9]+)(?:\?.+)?$/
+      urlregex: /^https?:\/\/app\.roboflow\.com\/([a-zA-Z0-9-]+)\/([a-zA-Z0-9-]+)\/images\/([a-zA-Z0-9-]+)(?:\?.+)?$/
     }
   }
 }
