@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "RF++",
   "description": "Helpful scripts and additions for Roboflow to make your life just a bit easier.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "icons": {
     "128": "assets/icon128.png",
     "200": "assets/icon.png"
