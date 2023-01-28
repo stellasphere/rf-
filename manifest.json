@@ -1,19 +1,23 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "RF++",
+  "description": "Helpful scripts and additions for Roboflow to make your life just a bit easier.",
   "version": "0.1.0",
   "icons": {
+    "128": "assets/icon128.png",
     "200": "assets/icon.png"
   },
-  "permissions": ["webNavigation","storage","*://*.roboflow.com/*"],
-  "browser_action": {
+  "permissions": ["webNavigation","scripting"],
+  "host_permissions": ["*://*.roboflow.com/*"],
+  "action": {
       "default_popup": "assets/popup.html",
       "default_icon": "assets/icon.png"
   },
   "background": {
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   },
-  "web_accessible_resources": [
-    "extras/*"
-  ]
+  "web_accessible_resources": [{
+    "resources": ["extras/*"],
+    "matches": ["*://*/*"]
+  }]
 }
