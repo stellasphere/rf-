@@ -47,4 +47,3 @@ var extras = {
     }
   }
 }
-chrome.storage.local.set({extras})
