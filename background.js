@@ -22,7 +22,7 @@ function newPage(data) {
       if(extra.script) {
         var scriptFilePath = `extras/${extra.folder}/${extra.script}`
         console.log("Executing Script:",scriptFilePath)
-        chrome.tabs.executeScript(data.tabId,{file:scriptFilePath});
+        chrome.scripting.executeScript({target:{tabId:data.tabId}, files:[scriptFilePath]});
       }
     }
   }

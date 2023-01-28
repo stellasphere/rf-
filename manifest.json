@@ -17,6 +17,6 @@
   },
   "web_accessible_resources": [{
     "resources": ["extras/*"],
-    "matches": ["*://*/"],
+    "matches": ["*://*/*"]
   }]
 }
