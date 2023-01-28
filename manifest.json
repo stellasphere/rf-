@@ -7,7 +7,8 @@
     "128": "assets/icon128.png",
     "200": "assets/icon.png"
   },
-  "permissions": ["webNavigation","scripting","*://*.roboflow.com/*"],
+  "permissions": ["webNavigation","scripting"],
+  "host_permissions": ["*://*.roboflow.com/*"],
   "action": {
       "default_popup": "assets/popup.html",
       "default_icon": "assets/icon.png"
