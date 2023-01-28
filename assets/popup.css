@@ -55,9 +55,35 @@ p {
     font-size: 12px;
 }
 
+.extra-instruction {
+    font-size: 12.5px;
+    margin: 5px 10px;
+}
+
+.extra-image {
+    max-width: 90%;
+    max-height: 200px;
+    align-self: center;
+    margin: 10px 0;
+}
+
 button {
     background-color: #fff;
     border: 0;
     border-radius: 100rem;
     padding: 5px 10px;
+}
+
+.links {
+    display: flex;
+    gap: 10px;
+}
+
+.link {
+    color: #171717;
+    text-decoration: none;
+    font-size: 13px;
+    background: #fff;
+    padding: 7.5px 15px;
+    border-radius: 0.25rem;
 }
