@@ -7,8 +7,8 @@
     "128": "assets/icon128.png",
     "200": "assets/icon.png"
   },
-  "permissions": ["webNavigation","scripting"],
-  "host_permissions": ["*://*.roboflow.com/*"],
+  "permissions": ["webNavigation","storage","scripting","contextMenus","tabs"],
+  "host_permissions": ["*://*.roboflow.com/*","*://*/"],
   "action": {
       "default_popup": "assets/popup.html",
       "default_icon": "assets/icon.png"
@@ -16,8 +16,17 @@
   "background": {
     "service_worker": "background.js"
   },
+  "content_scripts": [
+    {
+      "js": ["contentscript.js"],
+      "matches": ["*://*/*"]
+    }
+  ],
   "web_accessible_resources": [{
     "resources": ["extras/*"],
     "matches": ["*://*/*"]
-  }]
+  }],
+  "content_security_policy": {
+    "extension_pages": "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self' https://api.roboflow.com;"
+  }
 }
