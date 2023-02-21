@@ -1,14 +1,34 @@
 <html>
 
 <head>
-  <script src="popup.js"></script>
-  <link rel="stylesheet" type="text/css" href="popup.css">
+  <script src="./popup.js"></script>
+  <link rel="stylesheet" type="text/css" href="./popup.css">
 </head>
 
 <body>
   <h1>Roboflow++</h1>
   <p>Helpful scripts and additions for Roboflow to make your life just a bit easier. :)</p>
 
+  <div class="options">
+    <h2>Options</h2>
+    <div class="option">
+      <input class="option-input" type="password" id="apikey" placeholder="Private API Key">
+      <button class="option-button" id="apikeyupdate">Update API Key</button>
+    </div>
+    <p class="option-explainer">Get your Roboflow API key from your Roboflow workspace settings. On your Projects page, click the settings icon > Roboflow API and copy the private API key. You only need to enter your Roboflow API key to use the upload or inference features.</p>
+    <div class="option">
+      <select class="option-input" id="projectselect">
+      </select>
+      <button class="option-button" id="projectselectupdate">Select</button>
+    </div>
+    <p class="option-explainer">Set the project that you'd like to upload images to or infer from.</p>
+    <div class="option">
+      <select class="option-input" id="versionselect">
+      </select>
+      <button class="option-button" id="versionselectupdate">Select</button>
+    </div>
+    <p class="option-explainer">Pick which version of your model to infer on.</p>
+  </div>
 
   <div class="extras">
     <h2>Extras List</h2>

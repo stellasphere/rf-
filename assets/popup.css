@@ -4,19 +4,20 @@ body {
     margin: 0;
     background: linear-gradient(180deg, #190f56, #713cef);
     color: #fff;
-    min-width: 300px;
+    min-width: 400px;
     font-family: Inter, sans-serif;
     padding: 20px;
 }
 
 h1 {
     margin: 0;
-    font-size: 35px;
+    font-size: 40px;
 }
 
 h2 {
-    font-size: 25px;
-    margin: 0;
+    font-size: 22px;
+    margin: 2.5px 0;
+    font-weight: 500;
 }
 
 h3 {
@@ -70,8 +71,9 @@ p {
 button {
     background-color: #fff;
     border: 0;
-    border-radius: 100rem;
+    border-radius: 0.25rem;
     padding: 5px 10px;
+    cursor: pointer;
 }
 
 .links {
@@ -86,4 +88,27 @@ button {
     background: #fff;
     padding: 7.5px 15px;
     border-radius: 0.25rem;
+}
+
+.options {
+    margin: 20px 0;
+}
+
+.option {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    margin: 5px 0;
+}
+
+.option-input {
+    flex-grow: 1;
+    padding: 5px;
+    border-radius: 0.25rem;
+    border: 0;
+    font-size: 12.5px;
+}
+
+.option-explainer {
+    font-size: 12px;
 }
