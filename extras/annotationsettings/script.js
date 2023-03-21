@@ -42,7 +42,7 @@ async function annotationSettings() {
   settings.classList.add("tool","toolTip")
   settings.innerHTML = `
   <i class="far fa-ellipsis-v"></i>
-  <div class="settings" style="display: none;">
+  <div class="annotatesettings" style="display: none;">
       <div class="text">
           <h3 class="settings-heading title">Annotate Settings</h3>
           <p class="settings-description description">Customize your annotation experience.</p>
@@ -90,7 +90,7 @@ async function annotationSettings() {
 
 
   window.settingstippy = window.tippy(settings, {
-    content: settings.querySelector(".settings").querySelector(".text"),
+    content: settings.querySelector(".annotatesettings").querySelector(".text"),
     allowHTML: true,
     placement: 'left',
     appendTo: 'parent',
@@ -100,7 +100,7 @@ async function annotationSettings() {
   
   
   const css = `
-  .settings {
+  .annotatesettings {
       position: absolute;
       width: 300px;
   }
