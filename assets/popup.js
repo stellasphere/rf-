@@ -3,29 +3,27 @@ window.onload = async function() {
   document.querySelector("#apikeyupdate").addEventListener("click", async function() {
     var apikey = document.querySelector("#apikey").value
     if (apikey == "") return alert("API key empty")
-    var saved = await chrome.storage.sync.set({ rfapikey: apikey })
-    console.log(saved)
+    var saved = await setSync("rfapikey",apikey)
     updateOptions()
   })
   document.querySelector("#projectselectupdate").addEventListener("click", async function() {
     var projectid = document.querySelector("#projectselect").value
     if (projectid == "") return alert("A valid project wasn't selected")
-    var saved = await chrome.storage.sync.set({ rfprojectid: projectid })
-    console.log(saved)
+    var saved = await setSync("rfprojectid",projectid)
     updateOptions()
   })
   document.querySelector("#versionselectupdate").addEventListener("click", async function() {
     var versionid = document.querySelector("#versionselect").value
     if (versionid == "") return alert("A valid project wasn't selected")
-    var saved = await chrome.storage.sync.set({ rfversionid: versionid })
-    console.log(saved)
+    var saved = await setSync("rfversionid",versionid)
     updateOptions()
   })
   updateOptions()
 }
 async function updateOptions() {
   // UPDATE API KEY
-  if (await getSync("rfapikey")) document.querySelector("#apikey").value = await getSync("rfapikey")
+  var savedApiKey = await getSync("rfapikey")
+  if (savedApiKey) document.querySelector("#apikey").value = await getSync("rfapikey")
 
   // UPDATE PROJECTS LIST
   var projectselect = document.querySelector("#projectselect")
@@ -133,6 +131,13 @@ async function updateOptions() {
 async function getSync(key) {
   var data = await chrome.storage.sync.get(key)
   return data[key]
+}
+
+async function setSync(key, value) {
+  var saving = {}
+  saving[key] = value
+  var saved = await chrome.storage.sync.set(saving)
+  return saved
 }
 
 async function rfAPI(route, apikey) {

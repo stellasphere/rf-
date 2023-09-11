@@ -2,9 +2,8 @@
 
 body {
     margin: 0;
-    background: linear-gradient(180deg, #190f56, #713cef);
-    color: #fff;
-    min-width: 400px;
+    background-color: #f4f6f8;
+    width: 400px;
     font-family: Inter, sans-serif;
     padding: 20px;
 }
@@ -12,6 +11,7 @@ body {
 h1 {
     margin: 0;
     font-size: 40px;
+    color: #6706CE;
 }
 
 h2 {
@@ -28,6 +28,12 @@ h3 {
 p {
     margin: 0;
     font-size: 15px;
+}
+
+.panel {
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .extras {
@@ -69,11 +75,13 @@ p {
 }
 
 button {
-    background-color: #fff;
+    background-color: rgba(131,21,249);
     border: 0;
-    border-radius: 0.25rem;
-    padding: 5px 10px;
+    border-radius: 8px;
+    padding: 0px 10px;
     cursor: pointer;
+    color: #fff;
+    font-size: 14px;
 }
 
 .links {
@@ -99,16 +107,23 @@ button {
     width: 100%;
     gap: 10px;
     margin: 5px 0;
+    justify-content: center;
 }
 
 .option-input {
     flex-grow: 1;
     padding: 5px;
     border-radius: 0.25rem;
-    border: 0;
+    border: 0.5px solid;
     font-size: 12.5px;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 .option-explainer {
     font-size: 12px;
+}
+
+select.option-input {
+    max-width: calc(100% - 68px);
 }

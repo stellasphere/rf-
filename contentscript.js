@@ -5,8 +5,9 @@ if(!window.injectedContentScript) {
 
     var clickedelement = null
     document.addEventListener("contextmenu", function(event){
-        console.log("Updating Clicked Element:",event.target)
-        clickedelement = event.target;
+        var clickedElement = event.target || event.srcElement
+        console.log("Updating Clicked Element:",clickedElement,clickedElement.src)
+        clickedelement = clickedElement.src;
     }, true);
     
     chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
@@ -18,9 +19,8 @@ if(!window.injectedContentScript) {
     });
       
     
-    function getImageData(image, sendResponse) {
-        const src = image.src;
-        var name = src.split("/").pop().split("?")[0]
+    function getImageData(src, sendResponse) {
+        var name = src
         fetch(src)
         .then(response => response.blob())
         .then(blob => {
